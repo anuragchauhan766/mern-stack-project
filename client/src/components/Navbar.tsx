@@ -14,7 +14,7 @@ function Navbar() {
           "Content-Type": "application/json",
         },
       });
-      const data = await res.json();
+      await res.json();
 
       setLogin(true);
 

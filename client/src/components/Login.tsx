@@ -23,7 +23,7 @@ function Login() {
           password,
         }),
       });
-      const data = await res.json();
+      await res.json();
       if (res.status === 200) {
         alert("login successfully");
         navigate("/");

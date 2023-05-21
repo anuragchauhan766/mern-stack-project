@@ -44,7 +44,7 @@ function Register() {
       });
 
       if (res.status === 201) {
-        const data = await res.json();
+        await res.json();
         console.log("successful");
         alert("Registration successfull");
         navigate("/login");
