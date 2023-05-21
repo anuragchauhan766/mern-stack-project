@@ -4,6 +4,7 @@ const bcrypt = require("bcryptjs");
 // require("../db/connect");
 const authenticate = require("../middleware/authenticate");
 const User = require("../models/userSchema");
+const nodemon = require("nodemon");
 
 router.get("/", (req, res) => {
   res.send("hello world form router ");
@@ -53,6 +54,8 @@ router.post("/signin", async (req, res) => {
           path: "/",
           expires: new Date(Date.now() + 2589200000),
           httpOnly: true,
+          sameSite: "none",
+          secure: true,
         });
         res.status(200).json({ message: "user signin successfully" });
       } else {
