@@ -5,7 +5,7 @@ function Home() {
   const [show, setShow] = useState<boolean>(false);
   const Authenticate = async () => {
     try {
-      const res = await fetch("http://localhost:3000/about", {
+      const res = await fetch("https://mern-app-ewhe.onrender.com/about", {
         method: "GET",
         credentials: "include",
         headers: {

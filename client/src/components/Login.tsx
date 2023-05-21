@@ -12,7 +12,7 @@ function Login() {
   const loginhandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:3000/signin", {
+      const res = await fetch("https://mern-app-ewhe.onrender.com/signin", {
         method: "POST",
         credentials: "include",
         headers: {
