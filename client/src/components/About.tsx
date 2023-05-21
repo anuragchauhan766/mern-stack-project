@@ -13,7 +13,7 @@ function About() {
   const [userdata, setUserdata] = useState<UserData>();
   const Authenticate = async () => {
     try {
-      const res = await fetch("https://mern-app-ewhe.onrender.com/about", {
+      const res = await fetch(`${import.meta.env.VITE_SERVER_BASE_URL}/about`, {
         method: "GET",
         credentials: "include",
         headers: {

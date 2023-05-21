@@ -6,7 +6,7 @@ function Navbar() {
   const [login, setLogin] = useState<boolean>(false);
   const Authenticate = async () => {
     try {
-      const res = await fetch("https://mern-app-ewhe.onrender.com/about", {
+      const res = await fetch(`${import.meta.env.VITE_SERVER_BASE_URL}/about`, {
         method: "GET",
         credentials: "include",
         headers: {
@@ -14,15 +14,15 @@ function Navbar() {
           "Content-Type": "application/json",
         },
       });
+      if (res.status !== 200) {
+        console.error("server error");
+        return;
+      }
       await res.json();
 
       setLogin(true);
-
-      if (res.status !== 200) {
-        console.error("server error");
-      }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
   useEffect(() => {
@@ -34,14 +34,17 @@ function Navbar() {
   ) => {
     e.preventDefault();
     try {
-      const res = await fetch("https://mern-app-ewhe.onrender.com/logout", {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-      });
+      const res = await fetch(
+        `${import.meta.env.VITE_SERVER_BASE_URL}/logout`,
+        {
+          method: "GET",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+        }
+      );
       const data = await res.json();
       if (data) {
         console.log(data);

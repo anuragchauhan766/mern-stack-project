@@ -35,13 +35,16 @@ function Register() {
     const { name, phone, email, profession, password } = user;
     e.preventDefault();
     try {
-      const res = await fetch("https://mern-app-ewhe.onrender.com/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ name, phone, email, profession, password }),
-      });
+      const res = await fetch(
+        `${import.meta.env.VITE_SERVER_BASE_URL}/register`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ name, phone, email, profession, password }),
+        }
+      );
 
       if (res.status === 201) {
         await res.json();

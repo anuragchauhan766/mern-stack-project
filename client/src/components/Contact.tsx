@@ -18,7 +18,7 @@ function Contact() {
   });
   const Authenticate = async () => {
     try {
-      const res = await fetch("https://mern-app-ewhe.onrender.com/about", {
+      const res = await fetch(`${import.meta.env.VITE_SERVER_BASE_URL}/about`, {
         method: "GET",
         credentials: "include",
         headers: {
@@ -38,7 +38,7 @@ function Contact() {
         console.error("server error");
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
   useEffect(() => {

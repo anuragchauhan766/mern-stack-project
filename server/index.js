@@ -15,7 +15,7 @@ app.use(cookieParser());
 // routes linked
 app.use(
   cors({
-    origin: "https://mern-project-mqsc.onrender.com",
+    origin: ["https://mern-project-mqsc.onrender.com", "http://localhost:5173"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })

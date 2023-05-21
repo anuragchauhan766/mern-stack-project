@@ -5,7 +5,7 @@ function Home() {
   const [show, setShow] = useState<boolean>(false);
   const Authenticate = async () => {
     try {
-      const res = await fetch("https://mern-app-ewhe.onrender.com/about", {
+      const res = await fetch(`${import.meta.env.VITE_SERVER_BASE_URL}/about`, {
         method: "GET",
         credentials: "include",
         headers: {
@@ -13,16 +13,16 @@ function Home() {
           "Content-Type": "application/json",
         },
       });
+      if (res.status !== 200) {
+        console.error("server error");
+        return;
+      }
       const data = await res.json();
 
       setUsername(data.name);
       setShow(true);
-
-      if (res.status !== 200) {
-        console.error("server error");
-      }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
   useEffect(() => {
